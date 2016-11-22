@@ -13,5 +13,5 @@ app
     res.send('Home page');
   })
   .get('/:link', (req, res) => {
-    res.send(req.params.link);
+    res.send(req.shortLink);
   }).listen(port, () => console.log('App running on port', port));

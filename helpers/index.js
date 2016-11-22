@@ -23,15 +23,23 @@ var validateLink = (req, res, next) => {
 };
 
 var shortenLink = (req, res, next) => {
-  req.shortLink = Math.random().toString(10).slice(-4);
-  // Check if short link exist in db
-  Link.findOne({'shortLink': req.shortLink})
+  //Check if URL exists in db
+  Link.findOne({'url': req.params.link})
     .then((link) => {
-      console.log('One');
       if (link) {
-        shortenLink(req, res, next)
-      } else {
+        req.shortLink = link.shortLink;
         next();
+      } else {
+        req.shortLink = Math.random().toString(10).slice(-4);
+        // Check if short link exists in db
+        Link.findOne({'shortLink': req.shortLink})
+          .then((link) => {
+            if (link) {
+              shortenLink(req, res, next)
+            } else {
+              next();
+            }
+          });
       }
     });
 };
