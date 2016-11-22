@@ -1,27 +1,39 @@
 const moment = require('moment');
 const Link = require('../db').Link;
+const isURL = require('validator').isURL;
 
 var findShortLink = (req, res, next) => {
-  console.log('Finding short link');
-  next();
+  Link.findOne({'shortLink': req.params.link})
+    .then((link) => {
+      if (link) {
+        res.redirect(`http://${link.url}`)
+      } else {
+        next();
+      }
+    });
 }
 
 var validateLink = (req, res, next) => {
-  var valid = true;
+  var valid = isURL(req.params.link);
   if (valid) {
-    console.log('Validate:', req.params.link);
     next();
   } else {
-    console.log('Not valid');
-    res.send('Link not valid');
+    res.send('You provide bad-formated URL as a parameter');
   }
 };
 
 var shortenLink = (req, res, next) => {
-  const shortLink = Math.random().toString(10).slice(-4);
-  req.shortLink = shortLink;
-  // need to check existens of the same short link
-  next();
+  req.shortLink = Math.random().toString(10).slice(-4);
+  // Check if short link exist in db
+  Link.findOne({'shortLink': req.shortLink})
+    .then((link) => {
+      console.log('One');
+      if (link) {
+        shortenLink(req, res, next)
+      } else {
+        next();
+      }
+    });
 };
 
 var saveLink = (req, res, next) => {
