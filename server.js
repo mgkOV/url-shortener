@@ -4,6 +4,8 @@ const express = require('express'),
 const h = require('./helpers');
 const port = process.env.PORT || 3000
 
+app.set('view engine', 'ejs');
+
 app
   .use('/:link*', h.findShortLink
                , h.validateLink
