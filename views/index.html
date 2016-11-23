@@ -13,10 +13,24 @@
       h2 {
         margin: 0;
       }
-      .row {
+      img {
+        border: 1px solid white;
+      }
+      .container {
         margin-top: 20px;
       }
-      .main, .aside {
+      .main {
+        padding: 20px;
+        background-color: rgb(92, 151, 191);
+        color: white;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-size: 1.1em;
+        box-shadow: 5px 5px 5px #888888;
+      }
+
+      .aside {
+        margin-top: 0;
+        margin-bottom: 50px;
         padding: 20px;
         background-color: rgb(92, 151, 191);
         color: white;
@@ -38,6 +52,10 @@
         background-color: white;
         color: rgb(74, 76, 82);
         padding: 5px;
+      }
+
+      .indent {
+        margin-left: 20px;
       }
 
     </style>
@@ -66,7 +84,7 @@
           <div class="inside-box">
             <h2>Example creation output:</h2>
             <div class="code">
-              <code>{ "original_url":"http://foo.com:80", "short_url":"https://little-url.herokuapp.com/8170" }</code>
+              <code>{<br> <span class="indent">"original_url":"http://foo.com:80"</span>, <br> <span class="indent">"short_url":"https://little-url.herokuapp.com/8170"</span> <br>}</code>
             </div>
           </div>
 
@@ -86,8 +104,16 @@
 
         </div><!-- main -->
 
-        <div class="aside col-md-4 offset-md-1">
-          <h2>Last Usage</h2>
+        <div class="col-md-4 offset-md-1">
+          <div class="row aside-row">
+            <div class="col-md-12 aside">
+              <img src="https://avatars1.githubusercontent.com/u/19313399?v=3&s=460" alt="author" width="150px">
+              Created by: mgkOV
+            </div>
+            <div class="col-md-12 aside">
+              <h2>Last Usage</h2>
+            </div>
+          </div>
         </div><!-- aside -->
       </div><!-- row -->
     </div><!-- container -->
