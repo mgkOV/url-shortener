@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700');
+body {
+  margin: 0px;
+  background-color: rgb(236, 240, 241);
+}
+h2 {
+  margin: 0;
+}
+img {
+  border: 1px solid white;
+}
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.main {
+  padding: 20px;
+  background-color: rgb(92, 151, 191);
+  color: white;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.1em;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.aside {
+  margin-top: 0;
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: rgb(92, 151, 191);
+  color: white;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.1em;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.inside-box {
+
+  padding: 5px;
+  border: 1px solid white;
+  border-color: white;
+  margin-top: 10px;
+}
+
+.code {
+  font-size: 1rem;
+  background-color: white;
+  color: rgb(74, 76, 82);
+  padding: 5px;
+}
+
+.indent {
+  margin-left: 20px;
+}
