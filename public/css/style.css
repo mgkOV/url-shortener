@@ -9,6 +9,25 @@ h2 {
 img {
   border: 1px solid white;
 }
+i {
+  margin: 4px;
+  transition: all .5s;
+  color: white;
+}
+i:hover {
+  color: rgb(120, 120, 120);
+}
+a i, a:visited i {
+  color: white;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
 .container {
   margin-top: 20px;
   margin-bottom: 20px;
