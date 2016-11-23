@@ -9,29 +9,29 @@
 <div class="inside-box">
   <h2>Example creation usage:</h2>
   <div class="code">
-    <code>http://localhost:80/https://www.google.com</code>
+    <code>http://localhost:3000/<%= links[0].url %></code>
     <br>
-    <code>https://little-url.herokuapp.com/new/http://foo.com:80</code>
+    <code>http://localhost:3000/<%= links[1].url %></code>
   </div>
 </div>
 
 <div class="inside-box">
   <h2>Example creation output:</h2>
   <div class="code">
-    <code>{<br> <span class="indent">"original_url":"http://foo.com:80"</span>, <br> <span class="indent">"short_url":"https://little-url.herokuapp.com/8170"</span> <br>}</code>
+    <code>{<br> <span class="indent">"original_url":"<%= links[0].url %>"</span>, <br> <span class="indent">"short_url":"<%= links[0].shortLink %>"</span> <br>}</code>
   </div>
 </div>
 
 <div class="inside-box">
   <h2>Usage:</h2>
   <div class="code">
-    <code>https://little-url.herokuapp.com/2871</code>
+    <code><%= links[0].shortLink %></code>
   </div>
 </div>
 
 <div class="inside-box">
   <h2>Will redirect to:</h2>
   <div class="code">
-    <code>https://www.google.com/</code>
+    <code><%= links[0].url %></code>
   </div>
 </div>

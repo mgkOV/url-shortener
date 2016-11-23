@@ -8,16 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-        1111
-      </td>
-      <td>
-        2112222
-      </td>
-      <td>
-        2222111
-      </td>
-    </tr>
+    <% for(var i=0; i < links.length; i++) { %>
+      <tr>
+      <td><a href="<%= links[i].url %>"><%= links[i].url %></a></td>
+      <td><a href="<%= links[i].shortLink %>"><%= links[i].shortLink %></a></td>
+      <td><%= links[i].date %></td>
+      </tr>
+    <% } %>
   </tbody>
 </table>

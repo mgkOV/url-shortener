@@ -9,20 +9,29 @@ h2 {
 img {
   border: 1px solid white;
 }
-i {
+.fa {
   margin: 4px;
   transition: all .5s;
   color: white;
 }
-i:hover {
+.fa:hover {
   color: rgb(120, 120, 120);
 }
-a i, a:visited i {
+a {
+  color: white;
+  text-decoration: none;
+  transition: all .3s;
+}
+td a:hover {
+  color: rgb(80, 80, 80);
+}
+a, a:visited  {
   color: white;
 }
 table {
     width: 100%;
     border-collapse: collapse;
+    font-size: 0.8rem;
 }
 th, td {
     border-bottom: 1px solid #ddd;

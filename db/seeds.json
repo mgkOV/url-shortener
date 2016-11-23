@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://www.google.com",
+    "shortLink": "1234"
+  },
+  {
+    "url": "http://foo.com:80",
+    "shortLink": "4321"
+  }
+]

@@ -1,13 +1,32 @@
 const moment = require('moment');
 const Link = require('../db').Link;
 const isURL = require('validator').isURL;
+const _ = require('lodash');
+
+var seeds = () => {
+  Link.count({})
+    .then(quantity => {
+      if(quantity === 0) {
+        let s = require('../db/seeds.json');
+        _.each(s, seed => {
+          seed.date = moment().format("DD-MM-YY");
+          seed.shortLink = `http://localhost:3000/${seed.shortLink}`;
+          let link = new Link(seed);
+          link.save()
+            .catch((error) => {
+              console.log(error);
+            });
+        });
+      }
+    })
+};
 
 // Save link in db
 var saveLink = (req, res, next) => {
   var link = new Link({
     url: req.orgURL,
-    shortLink: req.shortLink,
-    date: moment().format("MMMM DD YYYY, HH:mm (Z)")
+    shortLink: `http://localhost:3000/${req.shortLink}`,
+    date: moment().format("DD-MM-YY")
   });
 
   link.save()
@@ -19,7 +38,8 @@ var saveLink = (req, res, next) => {
 
 //Chek if short link exist in db
 var findShortLink = (req, res, next) => {
-  Link.findOne({'shortLink': req.params.link})
+  var query = `http://localhost:3000/${req.params.link}`
+  Link.findOne({'shortLink': query})
     .then((link) => {
       if (link) {
         res.redirect(link.url);
@@ -27,7 +47,7 @@ var findShortLink = (req, res, next) => {
         next();
       }
     });
-}
+};
 
 // Validate if link correct formated
 var validateLink = (req, res, next) => {
@@ -65,9 +85,22 @@ var shortenLink = (req, res, next) => {
     });
 };
 
+var getLastLinks = (req, res, next) => {
+  Link.find({}).sort({ date: 1 }).limit(10)
+    .then((links) => {
+      req.links = links;
+      next();
+    })
+    .catch((error) => {
+      console.log(error);
+      next();
+    });
+};
 
 module.exports = {
+  seeds,
   findShortLink,
   validateLink,
-  shortenLink
+  shortenLink,
+  getLastLinks
 };
