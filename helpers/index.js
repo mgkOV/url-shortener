@@ -25,7 +25,7 @@ var seeds = () => {
 var saveLink = (req, res, next) => {
   var link = new Link({
     url: req.orgURL,
-    shortLink: `https://mww-shorten-url.herokuapp.com/${req.shortLink}`,
+    shortLink: `${req.shortLink}`,
     date: moment().format("DD-MM-YY")
   });
 
@@ -71,7 +71,8 @@ var shortenLink = (req, res, next) => {
         req.shortLink = link.shortLink;
         next();
       } else {
-        req.shortLink = Math.random().toString(10).slice(-4);
+        let token = Math.random().toString(10).slice(-4);
+        req.shortLink = `https://mww-shorten-url.herokuapp.com/${token}`
         // Check if short link exists in db
         Link.findOne({'shortLink': req.shortLink})
           .then((link) => {
