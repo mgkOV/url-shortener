@@ -37,6 +37,12 @@ th, td {
     border-bottom: 1px solid #ddd;
     text-align: left;
 }
+a code {
+  color: rgb(74, 76, 82);
+}
+a code:hover {
+  color: rgb(199, 37, 78);
+}
 .container {
   margin-top: 20px;
   margin-bottom: 20px;

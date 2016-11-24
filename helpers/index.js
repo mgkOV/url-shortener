@@ -10,7 +10,7 @@ var seeds = () => {
         let s = require('../db/seeds.json');
         _.each(s, seed => {
           seed.date = moment().format("DD-MM-YY");
-          seed.shortLink = `http://localhost:3000/${seed.shortLink}`;
+          seed.shortLink = `https://mww-shorten-url.herokuapp.com/${seed.shortLink}`;
           let link = new Link(seed);
           link.save()
             .catch((error) => {
@@ -25,7 +25,7 @@ var seeds = () => {
 var saveLink = (req, res, next) => {
   var link = new Link({
     url: req.orgURL,
-    shortLink: `http://localhost:3000/${req.shortLink}`,
+    shortLink: `https://mww-shorten-url.herokuapp.com/${req.shortLink}`,
     date: moment().format("DD-MM-YY")
   });
 
@@ -38,7 +38,7 @@ var saveLink = (req, res, next) => {
 
 //Chek if short link exist in db
 var findShortLink = (req, res, next) => {
-  var query = `http://localhost:3000/${req.params.link}`
+  var query = `http://mww-shorten-url.herokuapp.com/${req.params.link}`
   Link.findOne({'shortLink': query})
     .then((link) => {
       if (link) {
@@ -86,7 +86,7 @@ var shortenLink = (req, res, next) => {
 };
 
 var getLastLinks = (req, res, next) => {
-  Link.find({}).sort({ date: 1 }).limit(10)
+  Link.find({}).sort({ _id: -1 }).limit(10)
     .then((links) => {
       req.links = links;
       next();
