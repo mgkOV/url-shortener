@@ -58,7 +58,7 @@ var validateLink = (req, res, next) => {
     req.orgURL = req.originalUrl.slice(1);
     next();
   } else {
-    res.send('You provided bad-formated URL as a parameter');
+    res.send('You provided bad-formatted URL as a parameter');
   }
 };
 
