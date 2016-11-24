@@ -33,6 +33,9 @@ table {
     border-collapse: collapse;
     font-size: 0.8rem;
 }
+td {
+  min-width:45px;
+}
 th, td {
     border-bottom: 1px solid #ddd;
     text-align: left;
