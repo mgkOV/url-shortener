@@ -1,5 +1,4 @@
 const config = require('../config');
-console.log('config.dbURI:', config.dbURI);
 const Mongoose = require('mongoose').connect(config.dbURI);
 
 Mongoose.Promise = global.Promise;

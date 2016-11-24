@@ -38,7 +38,7 @@ var saveLink = (req, res, next) => {
 
 //Chek if short link exist in db
 var findShortLink = (req, res, next) => {
-  var query = `http://mww-shorten-url.herokuapp.com/${req.params.link}`
+  var query = `https://mww-shorten-url.herokuapp.com/${req.params.link}`
   Link.findOne({'shortLink': query})
     .then((link) => {
       if (link) {
